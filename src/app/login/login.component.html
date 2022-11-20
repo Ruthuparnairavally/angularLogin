@@ -1,0 +1,45 @@
+<mat-card>
+    <mat-card-content>
+        <div class="header">
+            <h2>Login Page</h2>
+        </div>
+    <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+        <div class="phone-input">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Phone</mat-label>
+                <span matPrefix>+91 &nbsp;</span>
+                <input formControlName="phone" matInput placeholder="555-555-1234" required>
+                <mat-error *ngIf="loginForm.get('phone')">
+                    Required Phone number
+                </mat-error>
+              </mat-form-field>
+        </div>
+
+        <div class="password-input">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input formControlName="password" matInput  required />
+            <mat-error *ngIf="loginForm.get('password')?.errors">
+                Password is required
+              </mat-error>
+
+              </mat-form-field>
+        </div>
+
+        <div class="password-input">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>OTP</mat-label>
+                <input formControlName="otp" matInput placeholder="1234" required>
+                <mat-error *ngIf="loginForm.get('otp')">
+                    Enter OTP
+                </mat-error>
+              </mat-form-field>
+        </div>
+        
+        <div mat-dialog-actions> 
+          <button type="submit" mat-button color="primary" 
+          [disabled]="loginForm.invalid">Login</button>
+        </div>
+    </form>
+    </mat-card-content>
+</mat-card>
